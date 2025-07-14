@@ -14,7 +14,9 @@ async function makeRequest(endpoint: string, params: Record<string, string>) {
     url.searchParams.append(key, value);
   }
 
-  const response = await fetch(url.toString());
+  const response = await fetch(url.toString(), {
+    cache: "no-store",
+  });
   if (!response.ok) {
     throw new Error(`Error fetching data: ${response.statusText}`);
   }
